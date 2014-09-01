@@ -2,35 +2,44 @@
 #include <string>
 #include <iomanip>
 using namespace std;
-string deal_time(int dlineHH,int spendHH,int dlineMM,int spendMM){
-	int ansHH,ansMM;
+
+struct data{
+	string name;
+	int HH;
+	char colon;
+	int MM;
+};
+
+data deal_time(data student,data t){
+	data anst;
 	int minus = 0;
-	string ans;
-	if (dlineMM - spendMM < 0){ansMM = 60 + dlineMM - spendMM; minus ++;}
-	else {ansMM = dlineMM - spendMM;}
-	ansHH = dlineHH - spendHH - minus;
-	ans = ansHH + ':' + ansMM;
-	return ans;
+	if (t.MM - student.MM < 0){anst.MM = 60 + t.MM - student.MM; minus ++;}
+	else {anst.MM = t.MM - student.MM;}
+	anst.HH = t.HH - student.HH - minus;
+	return anst;
 }
 int main(){
 	int N;
 	while (N--){
 		int K;
-		int earliestHH, earliestMM, latestHH, latestMM;
+		data et, lt;
 		cin >> K;
-		cin >> earliestHH;
-		cin >> earliestMM;
-		cin >> latestHH;
-		cin >> latestMM;
+		cin >> et.HH;
+		cin >> et.colon;
+		cin >> et.MM;
+		cin >> lt.HH;
+		cin >> lt.colon;
+		cin >> lt.MM;
 		while (K--){
-			int HH, MM;
-			string trash;
-			cin >> trash;
-			cin >> HH;
-			cin >> MM;
-
-			cout << deal_time(earliestHH, HH, earliestMM, MM);
-			cout << deal_time(latestHH, HH, latestMM, MM);
+			data student;
+			data e_anst, l_anst;
+			cin >> student.name;
+			cin >> student.HH;
+			cin >> student.colon;
+			cin >> student.MM;
+			e_anst = deal_time(student, et);
+			l_anst = deal_time(student, lt);			
+			cout << e_anst.HH << ":" << e_anst.MM << " " << l_anst.HH << ":" << l_anst.MM << endl;
 		}
 	}
 	return 0;
