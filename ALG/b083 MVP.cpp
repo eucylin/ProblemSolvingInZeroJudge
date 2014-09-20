@@ -35,16 +35,17 @@ int main(){
 		vector<player> p(n);
 		vector<player> b(n);
 		int countP = 0, countB = 0; 
+		cin.ignore();
 		for (int i = 0; i < n; i++){
-			char h = cin.peek();
-			if (h == 'P'){
-				cin >> p[i].position >> p[i].name >> p[i].win >> p[i].lose >> p[i].rate;
+			if (cin.get() == 'P'){
+				p[countP].position = 'P';
+				cin >> p[countP].name >> p[countP].win >> p[countP].lose >> p[countP].rate;
 				countP++;
 			}else{
-				cin >> b[i].position >> b[i].name >> b[i].win >> b[i].lose >> b[i].rate;
+				b[countB].position = 'B';
+				cin >> b[countB].position >> b[countB].name >> b[countB].win >> b[countB].lose >> b[countB].rate;
 				countB++;
 			}
-			cout << h << endl;
 		}
 		sort(p.begin(), p.begin() + countP, pCmp);
 		sort(b.begin(), b.begin() + countB, bCmp);
@@ -54,6 +55,7 @@ int main(){
 		for (int i = 0; i < countB ; i++){
 			cout << b[i].position << " " << b[i].name << endl;
 		}
+		cout << "=====" << endl;
 	}
 	system("pause");
 	return 0;
