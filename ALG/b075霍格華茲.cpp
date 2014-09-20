@@ -6,7 +6,7 @@ using namespace std;
 struct data{
 	string name;
 	int HH;
-	char colon;
+	char colon[1];
 	int MM;
 };
 
@@ -20,13 +20,16 @@ data deal_time(data student,data t){
 }
 int main(){
 	int N;
+	cin >> N;
 	while (N--){
 		int K;
 		data et, lt;
 		cin >> K;
+		cin.width(2);
 		cin >> et.HH;
 		cin >> et.colon;
 		cin >> et.MM;
+		cin.width(2);
 		cin >> lt.HH;
 		cin >> lt.colon;
 		cin >> lt.MM;
@@ -34,12 +37,17 @@ int main(){
 			data student;
 			data e_anst, l_anst;
 			cin >> student.name;
+			cin.width(2);
 			cin >> student.HH;
 			cin >> student.colon;
 			cin >> student.MM;
 			e_anst = deal_time(student, et);
 			l_anst = deal_time(student, lt);			
-			cout << e_anst.HH << ":" << e_anst.MM << " " << l_anst.HH << ":" << l_anst.MM << endl;
+			cout << setw(2) << setfill('0') <<
+			e_anst.HH << ":" << setw(2) << setfill('0') <<
+			e_anst.MM << " " << setw(2) << setfill('0') << 
+			l_anst.HH << ":" << setw(2) << setfill('0') <<
+			l_anst.MM << endl;
 		}
 	}
 	return 0;
