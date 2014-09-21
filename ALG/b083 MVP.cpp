@@ -6,8 +6,8 @@
 using namespace std;
 
 struct player{
-	string position;
-	string name;
+    string position;
+    string name;
 	int win;
 	int lose;
 	double rate;
@@ -35,15 +35,16 @@ int main(){
 		vector<player> p(n);
 		vector<player> b(n);
 		int countP = 0, countB = 0; 
-		cin.ignore();
+
 		for (int i = 0; i < n; i++){
+                	cin.ignore();
 			if (cin.get() == 'P'){
 				p[countP].position = 'P';
 				cin >> p[countP].name >> p[countP].win >> p[countP].lose >> p[countP].rate;
 				countP++;
 			}else{
 				b[countB].position = 'B';
-				cin >> b[countB].position >> b[countB].name >> b[countB].win >> b[countB].lose >> b[countB].rate;
+				cin >> b[countB].name >> b[countB].win >> b[countB].lose >> b[countB].rate;
 				countB++;
 			}
 		}
@@ -55,8 +56,9 @@ int main(){
 		for (int i = 0; i < countB ; i++){
 			cout << b[i].position << " " << b[i].name << endl;
 		}
-		cout << "=====" << endl;
+		if (k == 0){break;}
+		else{cout << "=====" << endl;}
 	}
-	system("pause");
+	//system("pause");
 	return 0;
 }
